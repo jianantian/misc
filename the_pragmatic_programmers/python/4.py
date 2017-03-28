@@ -1,0 +1,5 @@
+noun = input("Enter a noun:")
+verb = input("Enter a verb:")
+adjective = input("Enter an adjective:")
+adverb = input("Enter an adverb:")
+print("You like to walk with {adjective} {noun} and you want to {verb} {noun} {adverb}.".format(adjective=adjective, noun=noun, verb=verb, adverb=adverb))

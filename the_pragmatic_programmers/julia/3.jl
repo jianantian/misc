@@ -1,0 +1,6 @@
+println("What is the quote?")
+quot = strip(readline(STDIN))
+println("Who said it?")
+author = strip(readline(STDIN))
+println(string(author, " says, ", "\"", quot, "\""))
+# println("$author says, \"$quot\"")

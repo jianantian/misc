@@ -1,0 +1,5 @@
+println("What is your name?")
+# name = readline(STDIN)
+# name = strip(name)
+# print("Hello, $name, nice to meet you!")
+print("Hello, $(strip(readline(STDIN))), nice to meet you!")
