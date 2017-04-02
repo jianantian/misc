@@ -1,0 +1,107 @@
+% 07authored.tex
+% 2011/02/28, v3.00 gamma
+
+\chapter{Exercises}
+\label{rarities}
+
+\section{Organizing}
+Exercises can be handled
+in more than one way, as an enunciation or within a list, depending on your style and preference.
+They can be scattered through the book, or organised in sets at the end of sections or
+chapters, or some combination. But if you mix up styles we strongly recommend
+you give the different types different names, for example, Exercises could be
+scattered in the text, and Problems could be organised into sets, or vice versa.
+
+\subsection{Scattered through the text --  exer or exer*}
+There are two ways of handling exercises scattered through a chapter.
+\begin{enumerate}
+\item Use amsthm to define an \verb"exer" or \verb"exer*" environment
+subject to \verb"\theoremstyle{definition}". See Chapter~\ref{mathchap} for details.
+These environments must be defined in the root file for this document.
+Exercises created with \verb"exer" are numbered, if at all, in the same sequence as theorems etc.
+\item Use the \verb"exerciselist" environment, described below, with a single item.
+Exercises created within this environment will be numbered in a
+sequence separate from that for theorems etc.
+
+\end{enumerate}
+
+\subsection{At the end of sections -- exerciselist}
+The \cambridge\ class file defines the \verb"exerciselist" environment
+for setting lists of numbered exercises at the end of sections. These
+will not automatically be gathered under a heading, so there will be no  mention of them
+in the Table of Contents. Therefore you may wish to list them under a \verb"\subsection"
+and set the heading depth appropriately or use the
+appropriate \verb"\addcontentsline" command.
+
+There is an option for adding a label such as `Exercise' or `Problem'. The code
+\begin{verbatim}
+  \begin{exerciselist}[Exercise]
+     \item Show that the link between shock formation and
+       film rupture is invoked here because of the \ldots
+     \item Show that the physical interpretation of \ldots
+       \label{physi-ex}
+  \end{exerciselist}
+\end{verbatim}
+will produce
+  \begin{exerciselist}[Exercise]
+     \item Show that the link between shock formation and
+       film rupture is invoked here because of the \ldots
+     \item Show that the physical interpretation of \ldots
+       \label{physi-ex}
+  \end{exerciselist}
+Like other numbered environments, individual exercises
+(e.g. Exercise~\ref{physi-ex}) can be labeled for automatic cross-referencing.
+
+\subsection{At the end of chapters -- exercises}
+If you are gathering all exercises at the end of a given chapter,
+use the \verb"exercises" environment rather than \verb"exerciselist". This environment generates an entry
+in the table of contents and starts a new unnumbered section and running head. For example,
+\begin{verbatim}
+  \begin{exercises}
+    \item Let the film thickness be $h_0$,
+          \begin{equation}
+            h=h_0 H{\xi}.
+          \label{exerciseeq}
+          \end{equation}
+          Integrating once, \ldots
+    \item Assuming the flow far away from \ldots
+  \end{exercises}
+\end{verbatim}
+will produce (note the mention in the Table of Contents!)
+  \begin{exercises}
+    \item Let the film thickness be $h_0$,
+          \begin{equation}
+            h=h_0 H{\xi}.
+          \label{exerciseeq}
+          \end{equation}
+          Integrating once, \ldots
+    \item Assuming the flow far away from \ldots
+  \end{exercises}
+%
+If appropriate, you may change the `Exercises' heading to one of the following:
+%
+\begin{enumerate}[(iii)]
+\item `Exercise' -- by using \verb"\begin{exercise}...\end{exercise}"
+\item `Problems' -- by using \verb"\begin{problems}...\end{problems}"
+\item `Problem' -- by using \verb"\begin{problem}...\end{problem}"
+\end{enumerate}
+%
+For instance,
+\begin{verbatim}
+  \begin{problems}
+    \item By treating $y$ as the independent variable,
+          show that the general solution of \ldots
+    \item An electrical circuit contains a resistance \ldots
+          \label{circuit}
+  \end{problems}
+\end{verbatim}
+will typeset the following:
+  \begin{problems}
+    \item By treating $y$ as the independent variable,
+          show that the general solution of \ldots
+    \item An electrical circuit contains a resistance \ldots
+          \label{circuit}
+  \end{problems}
+
+
+\endinput

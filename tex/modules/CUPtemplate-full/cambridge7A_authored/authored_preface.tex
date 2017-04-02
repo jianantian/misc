@@ -1,0 +1,98 @@
+% author_preface.tex
+% 2011/02/28, v3.00 gamma
+
+\chapter*{Preface}
+This guide is for authors preparing a book for
+Cambridge University Press using \LaTeX\ and the \cambridge\ class
+file. It assumes you have some familiarity with \LaTeX\ --
+preferably with book.cls, which is itself somewhat different from article.cls.
+It is not a substitute for the \LaTeX\ manual itself.
+
+
+The \cambridge\  class file preserves the standard \LaTeX\ interface,
+so any document that can be produced using the standard
+{\LaTeX}2e book.cls can also be produced with {\cambridge}.cls.
+However, the measure (i.e. width of text) for {\cambridge}.cls
+is different from that for book.cls, so
+line breaks will change and tables, figures and
+long equations may need adjusting if you've already
+used book.cls to create a draft.
+Commands that differ from the standard \LaTeX\ interface,
+or that are provided in addition to the standard interface,
+are documented below.
+
+This guide was created by processing the following
+(the full root file is in Appendix \ref{root}:
+\begin{verbatim}
+  \documentclass[spanningrule]{cambridge7A}% options
+     \usepackage{natbib}
+     \usepackage[figuresright]{rotating}
+     \usepackage{floatpag}
+     \rotfloatpagestyle{empty}
+     \usepackage{amsthm}
+     \usepackage{graphicx}
+     \usepackage{txfonts}
+     \usepackage[scaled=0.9]{couriers}
+     \usepackage{multind}\ProvidesPackage{multind}
+      :
+\end{verbatim}
+
+Even if your book does not use references, rotated items,
+computer code, theorems, graphics, or multiple
+indexes, it will not hurt to include the packages above.
+If you include \verb"multind.sty",
+you must also insert \verb"\ProvidesPackage{multind}"; this command sends a message
+to the class file to restyle the index into the \cambridge\ style.
+
+Don't use the following standard document class options:
+\begin{itemize}
+\item \verb"10pt, 11pt, 12pt";
+\item \verb"oneside" (\verb"twoside" is the default);
+\item \verb"fleqn, leqno, titlepage, twocolumn".
+\end{itemize}
+
+
+\section*{A word about style}
+If you so wish, the source files for this guide can be used as templates
+for (parts of) your book. It's a really good idea
+to observe good programming style -- after all,
+\LaTeX\ is a programming language. Make sure for example, that
+you list all of your definitions and commands in the preamble,
+and that you don't include any that never get used. Don't duplicate them.
+Don't use different macros to do the same job. Don't overwrite them
+without cause; if you need locally to
+\verb"\renewcommand", then make sure you revert back to the original command
+as soon as you can.  Make sure the lines in
+your root file are short: note there's a difference between line feed and carriage return
+in some text editors. Don't include lots of local page make-up commands
+unless you're producing final files for printing, or unless you
+need to do so for float control. Structure your document
+using the environments or commands provided rather than sticking in \verb"\vspace" followed
+by some text in bold, for example. Don't number displayed items to which you're not
+going to refer. If you are going to refer to things, then use \verb"\label",
+\verb"\ref", \verb"\cite", etc. When
+you make a decision, document it in the root file, so you can refer back to
+it during the writing of your
+book  (which can take place over several years!).
+For the same reason, keep a style sheet in
+which you list things like your hyphenation or capitalization rules.
+Most importantly, \emph{be consistent in the way you typeset your book}.
+
+All the above will make the writing, editing, copyediting, correction and reformatting of your
+book much more manageable.
+
+\section*{Workflow}
+At some stage in the writing of your book, certainly before it's finished, you should discuss
+with your CUP editor how the production of your book will be handled. We need to know:
+ is the book being prepared
+by you in its final design; who is imposing final design or inputting copyeditorial corrections;
+when and how will the index be compiled; will the book be printed from final files provided by you;
+how competent in \LaTeX\ are you? The answers to these questions will help determine the workflow
+your book will follow during production. In any event, before the book is finished,
+you should supply your editor with a sample file for evaluating and testing.
+
+
+Note: books, and chapters,  must carry copyright lines if they are to be
+posted on personal or institutional webpages.
+
+

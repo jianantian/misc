@@ -1,0 +1,35 @@
+%This is file sample.tex
+\documentclass{cplslarge}%
+%For reference style
+\usepackage[authoryear]{natbib}
+% For index
+\usepackage{makeidx}
+\makeindex
+
+\begin{document}
+\frontmatter
+  \maketitle
+  \tableofcontents
+  \listoffigures
+  \listoftables
+%  \listofcontributors
+  \editedlistofcontributors
+  \printphotogallery
+  \include{acknow}
+  \include{foreward}
+\mainmatter
+  \part{Getting Started}
+  \include{chap1}% introduction
+  \include{chap2}% 
+\backmatter
+  \appendix
+  \include{appendix}
+  \endappendix
+
+%\renewcommand{\refname}{Bibliography}% if you prefer this heading
+\bibliography{cplslargesample}\label{refs}
+\bibliographystyle{cambridgeauthordate}
+ \printindex
+
+\end{document}
+

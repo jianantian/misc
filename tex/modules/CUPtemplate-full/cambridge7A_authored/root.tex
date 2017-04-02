@@ -1,0 +1,170 @@
+% root.tex
+% 2011/06/23, v3.1 gamma
+
+\chapter{The root file for this guide}
+\label{root}
+
+\begin{smallverbatim}
+% authored_guide.tex
+% 2011/06/23, v3.1 gamma
+%
+% Adapted by Diana Gillooly and David Tranah
+% from Ali Woollatt's original documentation for cambridge7A
+
+\NeedsTeXFormat{LaTeX2e}[1996/06/01]
+
+  \documentclass{cambridge7A}
+% \documentclass[spanningrule]{../cambridge7A}% option
+
+  \usepackage{natbib}
+% \usepackage[numbers]{natbib}% option
+
+  \usepackage[figuresright]{rotating}
+  \usepackage{floatpag}
+  \rotfloatpagestyle{empty}
+
+% \usepackage{amsmath}% if you are using this package,
+                      % it must be loaded before amsthm.sty
+  \usepackage{amsthm}
+  \usepackage{graphicx}
+
+ \usepackage{txfonts}
+% \usepackage[scaled=0.9]{couriers}% use if you're using \tt fonts
+
+% indexes
+% uncomment the relevant set of commands
+
+% for a single index
+% \usepackage{makeidx}
+% \makeindex
+
+% for multiple indexes using multind.sty
+  \usepackage{multind}\ProvidesPackage{multind}
+  \makeindex{authors}
+  \makeindex{subject}
+
+% for glossary entries
+  %\usepackage[style=list]{glossary}
+  \usepackage[number=none]{glossary}
+\makeglossary
+
+% theorem definitions
+% see chapter 3 for details
+  \theoremstyle{plain}% default
+  \newtheorem{theorem}{Theorem}[chapter]
+  \newtheorem{lemma}[theorem]{Lemma}
+  \newtheorem{proposition}[theorem]{Proposition}
+  \newtheorem{corollary}[theorem]{Corollary}
+  \newtheorem{conjecture}[theorem]{Conjecture}
+
+  \newtheorem*{theorem*}{Theorem}
+  \newtheorem*{lemma*}{Lemma}
+  \newtheorem*{proposition*}{Proposition}
+  \newtheorem*{corollary*}{Corollary}
+  \newtheorem*{conjecture*}{Conjecture}
+
+  \theoremstyle{definition}
+  \newtheorem{definition}[theorem]{Definition}
+  \newtheorem{example}[theorem]{Example}
+  \newtheorem{prob}[theorem]{Problem}
+  \newtheorem{remark}[theorem]{Remark}
+  \newtheorem{notation}[theorem]{Notation}
+  \newtheorem{exer}[theorem]{Exercise}
+
+  \newtheorem*{definition*}{Definition}
+  \newtheorem*{example*}{Example}
+  \newtheorem*{prob*}{Problem}
+  \newtheorem*{remark*}{Remark}
+  \newtheorem*{notation*}{Notation}
+  \newtheorem*{exer*}{Exercise}
+
+% \hyphenation{docu-ment baseline-skip polar}
+
+% for this documentation, table of contents lists up to subsection level
+  \setcounter{tocdepth}{2}
+
+  \newcommand\cambridge{cambridge7A}
+
+% remove the dot and change default for enumerated lists
+  \def\makeRRlabeldot#1{\hss\llap{#1}}
+  \renewcommand\theenumi{{\rm (\roman{enumi})}}
+  \renewcommand\theenumii{{\rm (\alph{enumii})}}
+  \renewcommand\theenumiii{{\rm (\arabic{enumiii})}}
+  \renewcommand\theenumiv{{\rm (\Alph{enumiv})}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \includeonly{06authored}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+  \title[Subtitle, If You Have One]
+    {Preparing Authored Books Using the \cambridge\ Class File}
+  \author{Cambridge University Press\\[3\baselineskip]
+    This guide was compiled using \hbox{\cambridge.cls \version}\\[\baselineskip]
+    The latest version can be downloaded from:
+    https://authornet.cambridge.org/information/productionguide/
+    LaTeX\_files/\cambridge.zip}
+
+  \bookabstract{This is the guide for authors who are preparing written,
+    rather than edited, books.}
+  \bookkeywords{\LaTeX; authored books; CUP style; cambridge7A.cls.}
+
+  \frontmatter
+  \maketitle
+  \tableofcontents
+% \listofcontributors
+
+  \include{authored_preface}
+
+  \mainmatter
+  \label{partpage}\part{The First Part}
+\include{01authored}% Introduction and basic design elements
+  \include{02authored}% Numbering and headings
+  \include{03authored}% Mathematics
+  \include{04authored}% Figures and tables
+  \include{05authored}% Reference and bibliography lists
+  \include{06authored}% Indexes
+  \include{07authored}% Exercises
+
+  \backmatter
+  \appendix
+% if you only have one appendix, use \oneappendix instead of \appendix
+  \include{theorem}
+  \include{root}
+  \include{appnum}
+  \endappendix
+  \addtocontents{toc}{\vspace{\baselineskip}}
+
+% the following lines will give you references at the end of the book
+  \renewcommand{\refname}{Bibliography}% if you prefer this heading
+  \bookreferences % if you already have references at the end of chapters,
+                  % you will need this command to start a new \chapter* heading
+  \bibliography{percolation}\label{refs}
+  \bibliographystyle{cambridgeauthordate}
+
+  \cleardoublepage
+
+% end notes, if you have them
+% \theendnotes
+
+
+% glossary
+  \printglossary
+
+% indexes
+
+% for a single index
+% \printindex
+
+% for multiple indexes using multind.sty
+  \printindex{authors}{Author index}
+  \printindex{subject}{Subject index}
+
+\end{document}
+\end{smallverbatim}
+
+\endinput
+

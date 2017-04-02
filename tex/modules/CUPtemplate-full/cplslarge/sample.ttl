@@ -1,0 +1,89 @@
+%This is file sample.ttl
+\begin{seriespage}
+{\bfseries Cambridge Planetary Science\par\vskip13pt}
+{\itshape Series Editors:\par\vskip5.75pt}
+\serieseditor{Fran Bagnel, David Jewitt, Carl Murray, Jim Bell, Ralph Lorenz,\\
+Francis Nimmo, Sara Russell}
+{\itshape Books in the series:\par\vskip5.75pt}
+
+\begin{enumerate}%
+\item Jupiter: The Planet, Satellites and Magnetosphere\\
+Edited by Bagenal, Dowling \& McKinnon\\
+9780521818087
+\end{enumerate}
+\end{seriespage}
+
+
+\begin{htpage}
+\title{The Martian Surface}
+\subtitle{Composition, Mineralogy and Physical Properties}
+
+\noindent Phenomenal new observations from Earth-based telescopes and Mars-based orbiters, landers, and rovers have dramatically advanced our understanding of the past environments on Mars. These include the first global-scale infrared and reflectance spectroscopic maps of the surface, leading to the discovery of key minerals indicative of specific past climate conditions; the discovery of large reservoirs of subsurface water ice; and the detailed in situ roving investigations of three new landing sites, which gives us firm evidence for the presence of liquid water on the surface or in the shallow subsurface in the distant past.
+
+This important, comprehensive book provides an overview of the latest Mars compositional and mineralogic discoveries since the last major review of this topic was published in 1992. It is an essential resource for researchers and students in planetary science, astronomy, space exploration, planetary geology, and planetary geochemistry. Specialized terms are defined throughout, so the material will be easily understood by researchers just getting into this field.\vskip\baselineskip
+
+\author{jim bell} is an Associate Professor in the Department of Astronomy at Cornell University. He is the lead scientist for the Pancam color imaging system on the NASA Mars Exploration Rovers Spirit and Opportunity, and is also a member of the science teams of the NASA Mars Pathfinder, Near Earth Asteroid Rendezvous (NEAR), Mars 2001 Odyssey Orbiter, Mars 2005 Reconnaissance Orbiter, and 2009 Mars Science Laboratory rover mission teams. He has authored or co-authored more than 150 peerreviewed scientific papers on Mars, is an editor for {\it Icarus}, and has an asteroid named after him (8146 Jimbell) by the International Astronomical Union.
+\end{htpage}
+
+
+\begin{titlepage}
+\title{THE MARTIAN SURFACE}
+\subtitle{Composition, Mineralogy, and Physical Properties}
+\editortag{Edited by}
+\author{JAMES F. BELL}
+\affil{Cornell University, New York}
+\author{A. N. OTHER}
+\affil{Cornell University, New York}
+\end{titlepage}
+
+
+\begin{imprintpage}
+\pressname{cambridge university press}\break
+Cambridge, New York, Melbourne, Madrid, Cape Town,\\ Singapore, S$\tilde{\rm a}$o Paulo, Delhi, Tokyo, Mexico City
+
+{Cambridge University Press}\break
+The Edinburgh Building, Cambridge CB2 8RU, UK
+
+\vskip-.5\baselineskip
+
+Published in the United States of America by Cambridge University Press, New York
+
+
+www.cambridge.org\break
+Information on this title: www.cambridge.org/9780521859028
+
+
+{\copyright} Cambridge University Press 2011
+
+
+
+This publication is in copyright. Subject to statutory exception\break
+and to the provisions of relevant collective licensing agreements,\break
+no reproduction of any part may take place without\break the written
+permission of Cambridge University Press.
+
+
+First published 2011
+
+
+Printed in the United Kingdom at the University Press, Cambridge
+
+
+{\itshape A catalogue record for this publication is available from the British Library}
+
+{\itshape Library of Congress Cataloguing in Publication data}
+
+
+
+
+ISBN 978-0-521-85902-8 Hardback\break
+ISBN 978-0-521-67596-3 Paperback
+
+
+
+\dsctext{Cambridge University Press has no responsibility for the persistence or\break accuracy of URLs
+for external or third-party internet websites referred to\break in
+this publication, and does not guarantee that any content on such\break websites is,
+or will remain, accurate or appropriate.}
+
+\end{imprintpage}

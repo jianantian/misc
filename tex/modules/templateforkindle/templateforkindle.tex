@@ -1,0 +1,113 @@
+﻿\documentclass[oneside,10pt,showtrims]{memoir}
+\setstocksize{110.985mm}{84.560mm}
+\settrimmedsize{110.985mm}{84.560mm}{*}
+\settrims{0pt}{0pt}
+\setlrmarginsandblock{3mm}{*}{*}
+\setulmarginsandblock{3mm}{*}{*}
+\setlength{\parskip}{0pt}
+\setheadfoot{0mm}{0mm}
+\setheaderspaces{*}{0mm}{*}
+\setmarginnotes{0mm}{0mm}{0mm}
+\checkandfixthelayout
+\frenchspacing
+\sloppy
+\pagestyle{empty}
+
+\title{Para una tumba sin nombre}
+\author{JUAN CARLOS ONETTI}
+\date{1959}
+
+\usepackage[spanish]{babel}
+%Begin font
+\usepackage{fontspec}
+\setmainfont{DanteMTStd-Medium}
+%\linespread{1.05} % Use if need more leading (space between lines)
+\usepackage{scalefnt} %Use to change font size
+%End font
+
+%Begin Decorative packages
+\usepackage{lettrine}
+\setcounter{DefaultLines}{3}
+\usepackage{pifont}
+\usepackage{fourier-orns}
+\usepackage{color}
+
+%End decorative packages
+
+%Begin title Style
+\makeatletter
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1pt\hfill \kern \z@}
+\def\maketitle{%
+\null
+\thispagestyle{empty}%
+\vskip 1cm
+\begin{flushright}
+\normalfont\Large \@author
+\end{flushright}
+\vfil
+\hrule height 2pt
+\par
+\begin{center}
+\Huge\strut \@title \par
+\end{center}
+\hrule height 2pt
+\par
+\vfil
+\vfil
+\null
+\cleardoublepage
+}
+\makeatother
+%\author{Isidore Ducasse, Comte de Lautréamont}
+%\author{Lautréamont}
+%\title{Les Chants de Maldoror}
+%\date{1874}
+%End Title Style
+
+%Begin Chapter Style
+\makeatletter
+\newcommand\thickhrulefillm{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
+\setlength\midchapskip{10pt}
+\makechapterstyle{VZ14}{
+\renewcommand\chapternamenum{}
+\renewcommand\printchaptername{}
+\renewcommand\chapnamefont{\Large\scshape}
+\renewcommand\printchapternum{%
+\chapnamefont\null\thickhrulefillm\quad
+\@chapapp\space\thechapter\quad\thickhrulefillm}
+\renewcommand\printchapternonum{%
+\par\thickhrulefillm\par\vskip\midchapskip
+\hrule\vskip\midchapskip
+}
+\renewcommand\chaptitlefont{\Huge\scshape\centering}
+\renewcommand\afterchapternum{%
+\par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip}
+\renewcommand\afterchaptertitle{%
+\par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip}
+}
+\makeatother
+\chapterstyle{VZ14}
+%End Chapter Style
+
+%Begin Invisible trim
+\definecolor{light-gray}{gray}{0.95}
+\renewcommand*{\trimmarkscolor}{\color{light-gray}}
+%End Invisible Point
+
+\begin{document}
+
+\scalefont{1.020}
+\maketitle
+\mainmatter
+\chapter{I}
+\aliaspagestyle{chapter}{empty}
+\pagestyle{empty}
+\lettrine[slope=0pt,findent=0em,nindent=-.4em]{T}{}
+\small ODOS NOSOTROS\normalsize \scalefont{1.020}, los notables, los que tenemos derecho a jugar al póker en el Club Progreso y a dibujar iniciales con entumecida vanidad al pie de las cuentas por copas o comidas en el Plaza. Todos nosotros sabemos cómo es un entierro en Santa María. Algunos fuimos, en su oportunidad, el mejor amigo de la familia; se nos ofreció el privilegio de ver la cosa desde un principio y, además, el privilegio de iniciarla.
+
+Es mejor, más armonioso, que la cosa empiece de noche, después y antes del sol. Fuimos a lo de Miramonte o a lo de Grimm, «Cochería Suiza». A veces, hablo de los veteranos, podíamos optar; otras, la elección se había decidido en rincones de la casa de duelo, por una razón, por diez o por ninguna. Yo, cuando puedo, elijo a Grimm para las familias viejas. Se sienten más cómodas con la brutalidad o indiferencia de Grimm, que insiste en hacer personalmente todo lo indispensable y lo que inventa por capricho. Prefieren al viejo por motivos raciales, esto puede verlo cualquiera; pero yo he visto además que agradecen su falta de hipocresía, el alivio que les proporciona enfrentando a la muerte como un negocio, considerando al cadáver como un simple bulto transportable.
+\renewcommand{\pfbreakdisplay}{%
+\decofourright\quad\decofourright\quad\decofourright}
+\fancybreak{\pfbreakdisplay}
+Hemos ido, casi siempre en la madrugada, serios pero cómodos en la desgracia, con una premeditada voz varonil y no cautelosa, a golpear en la puerta eternamente iluminada de Miramonte o de Grimm. Miramonte, en cambio, confía todo, en apariencia, a los empleados y se dedica, vestido de negro, peinado de negro, con su triste bigote negro y el brillo discretamente equívoco de los ojos de mulato, a mezclarse entre los dolientes, a estrechar manos y difundir consuelos. Esto les gusta a los otros, a los que no tuvieron abuelos arando en la colonia; también los he visto. Golpeamos, golpeo bajo el letrero luminoso violeta y explico mi misión a uno de los dos, al gringo o al mulato; cualquiera de ellos la conocía cinco minutos después del último suspiro y aguardaba. Grimm bosteza, se pone los anteojos y abre un libro enorme.
+\end{document}

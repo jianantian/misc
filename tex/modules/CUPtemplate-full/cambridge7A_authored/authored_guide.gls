@@ -1,0 +1,14 @@
+\begin{theglossary}\glogroupC
+
+\gloitem {\glosslabel{glo:cat}{cat}}a domesticated mammal\relax
+\glodelim 
+		\glsnumformat{35}\delimT \gloskip \glogroupD
+
+\gloitem {\glosslabel{glo:dog}{dog}}a domesticated mammal, used as a pet or for work purposes\relax
+\glodelim 
+		\glsnumformat{35}\delimT \gloskip \glogroupR
+
+\gloitem {\glosslabel{glo:rabbit}{rabbit}}a rodent, common in the wild or as a pet. Occasionally farmed\relax
+\glodelim 
+		\glsnumformat{35}\delimT 
+\end{theglossary}

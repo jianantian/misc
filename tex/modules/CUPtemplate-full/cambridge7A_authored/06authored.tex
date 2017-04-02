@@ -1,0 +1,243 @@
+% 06authored.tex
+% 2011/02/28, v3.00 gamma
+
+\chapter{Indexes and glossaries}
+\label{indexes}
+
+\section{Inserting indexing commands}
+You need to code the text so that \LaTeX\ knows what terms to index, and how
+to organise them.
+
+If, for example, you have `chocolate cake' in the text, you add this
+phrase to the index simply by adding the \verb"\index" command to the source code:
+\begin{verbatim}
+  ...chocolate cake\index{chocolate cake}
+\end{verbatim}
+If the text doesn't actually say `chocolate cake', but you want
+that in the index, then you should simply type \verb"\index{chocolate cake}" in the source file
+at the appropriate point.
+
+\subsection{Subentries}
+If your text contained several varieties of cake, you might
+also want them listed under `cake' with subentries; to achieve this, use the ! as shown below:
+\begin{verbatim}
+  ...chocolate cake\index{chocolate cake}\index{cake!chocolate}
+  ...lemon cake\index{lemon cake}\index{cake!lemon}
+\end{verbatim}
+Running the makeindex program (see Section~\ref{makeidx}) will
+create an index which contains, in the correct alphabetical order, the following entries:
+
+\vspace{0.5\baselineskip}%
+\noindent{\indexsize cake\\
+\mbox{}\quad chocolate\\
+\mbox{}\quad lemon\\
+chocolate cake\\[0.5\baselineskip]
+lemon cake\par}
+
+You can also have subsubentries (but there is no support for subsubsubentries):
+\begin{verbatim}
+  ...Belgian chocolate cake\index{cake!chocolate!Belgian}
+\end{verbatim}
+
+\subsection{Page ranges}
+If cake appears over several consecutive pages, then the make the first instance:
+\begin{verbatim}
+  \index{cake|(}
+\end{verbatim}
+and the final one:
+\begin{verbatim}
+  \index{cake|)}
+\end{verbatim}
+When compiled, the index will read (assuming the entries fell on
+pages~5 and~10 respectively):\\[0.5\baselineskip]
+{\indexsize cake, 5--10}\\[0.5\baselineskip]
+The above also works with subentries.
+
+\subsection{Entries without page numbers}
+Sometimes you want to add a cross-reference with no page number:
+\begin{verbatim}
+  ...birthday party\index{cake!orange|see{orange cake}}
+\end{verbatim}
+will give you:\\[0.5\baselineskip]
+{\indexsize cake\\
+\mbox{}\quad orange, \textit{see} orange\vadjust{\vspace{3pt}} cake\par}
+
+\subsection{Entries starting with non-alphabetic characters}
+If you have index entries in which the first character
+is not alphabetical, e.g. \verb"\emph{cake}" or \verb"$\lambda$" you
+need to tell \LaTeX\ where to place that word in the final index.
+So you would ask for \verb"\emph{cake}" to be sorted as if it
+were the word `cake' and \verb"$\lambda$" as if it were the word `lambda'.
+
+The following example shows how to do that
+The characters before the \verb"@" symbol in the expression
+\verb"lambda@$\lambda$" are for sorting purposes only; what
+appears after the symbol is printed in the index. The
+character $\lambda$ will appear before lemon cake, since this is what we've requested:
+\begin{verbatim}
+  ...lemon cake\index{lemon cake}
+  ...$\lambda$\index{lambda@$\lambda$}
+  ...\emph{cake}\index{cake@\emph{cake}}
+\end{verbatim}
+The output will be as follows:\\[0.5\baselineskip]
+{\indexsize \emph{cake}\\
+$\lambda$\\
+lemon cake\par}
+
+\section{Creating a single index using makeidx.sty}
+\label{makeidx}
+The basic \verb"\index" command in \LaTeX\ does not print
+anything in its argument but merely `writes' it to a different
+file with the extension .idx. (The makeidx programme turns
+that into a file with the extension .ind, which is the one in
+which all terms are grouped together in alphabetical order,
+with all instances and no duplications, i.e. it would
+not write 123, 123 against a term in the index.
+The .ind file will not change automatically,
+even when the .idx file changes: you need to rerun makeidx to change that.) %%BUG: True?
+
+You will need the package makeidx.sty, and the following
+commands in the preamble of the root file:\\[0.5\baselineskip]
+\verb"  \documentclass{"\texttt{\cambridge}\verb"}"\\
+\verb"    \usepackage{makeidx}"\\
+\verb"    \makeindex"\\
+\verb"    \begin{document}"\\[6.5pt]
+%
+To generate a single index, normally a subject index, the commands would take the form:
+\begin{verbatim}
+  \index{diffraction}
+  \index{force!hydrodynamic}
+  \index{force!interactive}
+\end{verbatim}
+at the appropriate points in the text.
+
+The command \verb"\printindex" (which outputs the index)
+should be placed immediately before the end of the document.
+The (optional) \verb"\indextext" command will
+insert a phrase below the `Index' chapter heading, across
+two columns, the index entries themselves being set in double-column form.
+
+\begin{verbatim}
+    \indextext{Page numbers in italics indicate ...}
+    \printindex
+  \end{document}
+\end{verbatim}
+
+
+Run your files through \LaTeX\ enough times so that the labels, etc.,
+are stable. Then execute the command:\\[0.5\baselineskip]
+\verb"  makeindex "\texttt{\cambridge test}\\[0.5\baselineskip]
+To include the index, you need to run \LaTeX\ one more time.
+
+
+\section{Creating multiple indexes using multind.sty}
+This guide has been prepared using \verb"multind.sty".
+This style file redefines the \verb"\makeindex", \verb"\index" and
+\verb"\printindex" commands to deal with multiple indexes.
+
+Suppose you want to create an author index and a subject index.
+The entries should be in the text as usual, but take the following form:
+\begin{verbatim}
+  \index{authors}{Young, P.D.F.}
+  \index{authors}{Tranah, D.A.}
+  \index{authors}{Peterson, K.}
+  \index{subject}{diffraction}
+  \index{subject}{force!hydrodynamic}
+  \index{subject}{force!interactive}
+\end{verbatim}
+  \index{authors}{Young, P.D.F.}%
+  \index{authors}{Tranah, D.A.}%
+  \index{authors}{Peterson, K.}%
+  \index{subject}{diffraction}%
+  \index{subject}{force!hydrodynamic}%
+  \index{subject}{force!interactive}%
+In the preamble, you need to add the following lines:
+\begin{verbatim}
+  \usepackage{multind}\ProvidesPackage{multind}
+  \makeindex{authors}
+  \makeindex{subject}
+\end{verbatim}
+It is crucial to add the command \verb"\ProvidesPackage{multind}";
+this will send a message to the class file to re-style the index into
+the \cambridge\ style. You will get a warning in your log file:
+\begin{verbatim}
+  LaTeX Warning: You have requested package `',
+                 but the package provides `multind'.
+\end{verbatim}
+which can be ignored. At the point where you wish your indexes to appear, you then need the commands:
+\begin{verbatim}
+  \printindex{authors}{Author index}
+  \printindex{subject}{Subject index}
+\end{verbatim}
+Run your book through \LaTeX\ enough times so that the labels, etc., are stable. Then execute the commands:
+\begin{verbatim}
+  makeindex authors
+  makeindex subject
+\end{verbatim}
+To include the indexes, you need to run \LaTeX\ one more time.
+
+\section{Warning about index.sty}
+This style file also permits multiple indexes.
+
+However, in order to implement \verb"index.sty", it's proved necessary to
+modify a number of \LaTeX\ commands seemingly unrelated to indexing,
+namely, \verb"\@starttoc", \verb"\raggedbottom", \verb"\flushbottom",
+\verb"\addcontents", \verb"\markboth", and \verb"\markright".
+Naturally, this could cause incompatibilities between \texttt{index.sty}
+and any style files that either redefine these same commands or
+make specific assumptions about how they operate.
+
+The redefinition of \verb"\@starttoc" is particularly bad,
+since it introduces an incompatibility with the AMS document classes.
+
+For this reason we do not currently recommend using \verb"index.sty".
+
+\enlargethispage{14pt}
+\section{Inserting glossary commands}\label{glossary}
+
+You may make use of the glossary.sty style file contained 
+within the package http://www.ctan.org/tex-archive/macros/latex/contrib/glossary/.
+
+Briefly, 
+you may generate a glossary by inserting the following commands:
+%
+\begin{verbatim}
+\glossary{name={cat},
+          description={a domesticated mammal}}
+
+\glossary{name={rabbit},
+          description={a rodent, common in the wild or as a pet. Occasionally farmed}}
+
+\glossary{name={dog},
+          description={a domesticated mammal, used as a pet or for work purposes}}
+\end{verbatim}
+where appropriate.
+%
+\glossary{name={cat},
+          description={a domesticated mammal}}
+
+\glossary{name={rabbit},
+          description={a rodent, common in the wild or as a pet. Occasionally farmed}}
+
+\glossary{name={dog},
+          description={a domesticated mammal, used as a pet or for work purposes}}
+
+You then need to have the following commands in the root file:
+\begin{verbatim}
+  \usepackage[style=list]{glossary}
+  \makeglossary
+    :
+  \printglossary
+\end{verbatim}
+(see Appendix~\ref{root} for details). The following example assumes that your 
+root file is called tranah.tex. Run the files through \LaTeX, then run the file:
+\begin{verbatim}
+  makeindex -s tranah.ist -t tranah.glg -o tranah.gls tranah.glo
+\end{verbatim}
+and finally, run the files through \LaTeX\ again. If you don't want page numbers included (as in this guide)
+then add the \verb"number=none" otpional argument, like so:
+\begin{verbatim}
+  \usepackage[number=none]{glossary}
+\end{verbatim}
+
+\endinput

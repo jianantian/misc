@@ -1,0 +1,53 @@
+% theorem.tex
+% 2011/02/28, v3.00 gamma
+
+\chapter{amsthm commands}
+\label{theorem}
+
+You can copy and paste the following code into your root file.
+Assuming you have included \verb"amsthm.sty", it will number your theorems,
+definitions, etc. in a single sequence within your chapter,
+e.g.~Definition~4.1, Lemma~4.2, Lemma~4.3, Proposition~4.4, Corollary~4.5.
+
+\begin{smallverbatim} %don't copy this line!
+  \theoremstyle{plain}% default
+    \newtheorem{theorem}{Theorem}[chapter]
+    \newtheorem{lemma}[theorem]{Lemma}
+    \newtheorem{proposition}[theorem]{Proposition}
+    \newtheorem{corollary}[theorem]{Corollary}
+    \newtheorem{conjecture}[theorem]{Conjecture}
+
+    \newtheorem*{theorem*}{Theorem}
+    \newtheorem*{lemma*}{Lemma}
+    \newtheorem*{proposition*}{Proposition}
+    \newtheorem*{corollary*}{Corollary}
+    \newtheorem*{conjecture*}{Conjecture}
+
+  \theoremstyle{definition}
+    \newtheorem{definition}[theorem]{Definition}
+    \newtheorem{example}[theorem]{Example}
+    \newtheorem{prob}[theorem]{Problem}
+    \newtheorem{remark}[theorem]{Remark}
+    \newtheorem{notation}[theorem]{Notation}
+    \newtheorem{exer}[theorem]{Exercise}
+    \newtheorem{criterion}[theorem]{Criterion}
+    \newtheorem{algorithm}[theorem]{Algorithm}
+    \newtheorem{claim}[theorem]{Claim}
+
+    \newtheorem*{definition*}{Definition}
+    \newtheorem*{example*}{Example}
+    \newtheorem*{prob*}{Problem}
+    \newtheorem*{remark*}{Remark}
+    \newtheorem*{notation*}{Notation}
+    \newtheorem*{exer*}{Exercise}
+    \newtheorem*{criterion*}{Criterion}
+    \newtheorem*{algorithm*}{Algorithm}
+    \newtheorem*{claim*}{Claim}
+
+    \newtheorem*{note}{Note}
+    \newtheorem*{summary}{Summary}
+    \newtheorem*{acknowledgement}{Acknowledgement}
+    \newtheorem*{conclusion}{Conclusion}
+\end{smallverbatim} %don't copy this line!
+
+\endinput

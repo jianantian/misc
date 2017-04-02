@@ -1,0 +1,30 @@
+% appnum.tex
+% 2011/02/28, v3.00 gamma
+
+\chapter{Numbering in appendices}
+\label{appnum}
+
+In appendices equations are numbered in one sequence by chapter,
+but now the chapter `number' is an upper-case letter.
+Here are examples.
+\begin{equation}\label{einsteinapp}
+E = Mc^2 .
+\end{equation}
+Here are examples of a multiline displays:
+\begin{equation}
+\left.\begin{array}{rcl}
+x &=& a+b\\
+y &=& c+d\\
+z &=& e+f.
+\end{array}\right\}
+\end{equation}
+\begin{eqnarray}
+x&=&a+a+b+b\nonumber\\
+&=&2a+b+b\nonumber\\
+&=&2a+2b.
+\end{eqnarray}
+
+Figures and tables are similarly numbered, via the \verb"\caption", command in the usual way:
+\begin{figure}[ht]
+\caption{A figure in an appendix.}
+\end{figure}

@@ -1,0 +1,287 @@
+% 01authored.tex
+% 2011/02/28, v3.00 gamma
+
+\chapter{Introduction and basic design elements}
+\label{intro}
+
+\section{Getting started}
+\label{usingcamb}
+Copy \cambridge.cls into the correct subdirectory on your system.
+To run this guide through \LaTeX,
+you need in addition the following style files:\\[0.5\baselineskip]
+\verb"    natbib"\\
+\verb"    rotating"\\
+\verb"    floatpag"\\
+\verb"    amsthm"\\
+\verb"    graphicx"\\
+\verb"    multind"\\[0.5\baselineskip]
+If you include \verb"multind.sty", you must also insert the command
+\verb"\ProvidesPackage{multind}"; it simply sends a message to the class file
+to re-style the index into the \cambridge\ style.
+
+In general, the following standard document class options should \emph{not} be used:
+ \begin{itemize}
+  \item \texttt{10pt}, \texttt{11pt}, \texttt{12pt};
+  \item \texttt{oneside}  (\texttt{twoside} is the default);
+  \item \texttt{fleqn}, \texttt{leqno}, \texttt{titlepage}, \texttt{twocolumn}.
+ \end{itemize}
+
+
+\section{Master root file}
+Create a master root file for the book. The preamble should begin like so:
+
+\verb"  \documentclass{"\texttt{\cambridge}\verb"}"\\
+\verb"    \usepackage{natbib}"\\
+\verb"    \usepackage{rotating}"\\
+\verb"    \usepackage{floatpag}"\\
+\verb"       \rotfloatpagestyle{empty}"\\
+\verb"    \usepackage{amsthm}"\\
+\verb"    \usepackage{graphicx}"\\
+\verb"    \usepackage{txfonts}"\\
+\verb"    \usepackage{multind}\ProvidesPackage{multind}"\\[0.5\baselineskip]
+
+In the preamble are specified, for the entire book:
+\begin{itemize}
+\item font (default\footnote{The default is determined by the class file.
+Changes from the default must be specified in the root file.}  = Computer Modern;
+this guide is in Times)
+\item depth of section numbering (default = three levels)
+\item theorem style (no default; must specify)
+\item french spacing (default = yes)
+\item enumerate style (default = arabic numbered with full stop, but not in this guide)
+\item copyright line for the start of each chapter (default = no)
+\item spanning rule (default = no, but we include the rule here)
+\end{itemize}
+
+The root file for this guide is given in Appendix \ref{root}.
+
+\subsection{Fonts}
+Discuss the choice of font with your CUP editor. In most cases, it will be one of the following:
+\begin{itemize}
+\item Computer Modern (default)
+\item mathptmx, available from\\
+http://www.ctan.org/tex-archive/fonts/psfonts/psnfss-source/mathptmx/
+\item txfonts (chosen for this guide), available from\\
+http://www.ctan.org/tex-archive/fonts/txfonts/
+\end{itemize}
+
+If you deliver your files in the default Computer Modern font,
+we are likely to ask our typesetters to change it to some variety of Times, our preferred font.
+However, if your book contains critical line or page breaks (e.g. in reproduced
+computer code), we will probably leave it in Computer Modern.
+If you typeset in Computer Modern and have computer code in a monospaced font,
+we recommend you also use the \verb"couriers.sty" package, as follows:\\[0.5\baselineskip]
+\verb"\usepackage[scaled=0.9]{couriers}"\\[0.5\baselineskip]
+in order that the code font is comparable in size to the regular text font.
+
+If you deliver your files in either mathptmx or txfonts, we are
+unlikely to change the font.
+
+A word about these two font packages: mathptmx changes the default roman font to Adobe Times but does not
+support bold math characters. Txfonts does support bold math,
+but the kerning of subscripts and superscripts is not ideal and
+sometimes requires manual intervention. (N.B. You must load txfonts after amsthm;
+otherwise you will get some `already defined' messages.)
+We don't give times.sty as an option because it mixes Computer Modern
+and Times fonts, and there is a clash between math and italic characters. With txfonts you can get round this clash by using
+\verb"$\varv$" instead of \verb"$\mathit{v}$". Another way is to use
+ the `upright' lower-case greek characters defined by 
+\verb"\nuup", \verb"\alphaup" etc. Thus
+$$
+\mathit{v},\ \varv,\ \nuup,\ \nu
+$$
+is produced by
+\begin{verbatim}
+$$
+\mathit{v},\ \varv,\ \nuup,\ \nu
+$$
+\end{verbatim}
+
+
+\subsection{Depth of section numbering}
+\LaTeX\ provides five levels of section heads. In {\cambridge},
+the first three levels are numbered. You can reduce the depth to which
+section heads are numbered (please don't increase it).
+For example, if you want only sections and subsections numbered,
+insert the following in the preamble:
+\begin{verbatim}
+  \setcounter{secnumdepth}{2}
+\end{verbatim}
+If you want only sections numbered, change the \verb"{2}" to \verb"{1}".
+
+\subsection{Theorem style}
+We use the amsthm package. See Chapter~\ref{mathchap} and amsthdoc,
+the documentation for the package.
+
+The theorem syle is specified in the master root file -- among other things,
+all enunciations should be numbered in a single sequence, preferably
+within each chapter, for ease of navigation. If numbering is getting out of
+hand, try numbering enunciations by section rather than by chapter alone.
+More details are given in the Section \ref{amsthm}.
+
+\subsection{French spacing}
+The  \verb"\frenchspacing" option is chosen by default.
+This ensures that no extra space is inserted after full stops.
+If you have a strong reason to override this default, key \verb"\nonfrenchspacing" in the preamble.
+
+\subsection{Lists}
+The \cambridge\ class provides the following standard list environments:
+\begin{itemize}
+ \item numbered lists, created using the \verb"enumerate" environment;
+ \item bulleted lists, created using the \verb"itemize" environment;
+ \item labelled lists, created using the \verb"description" environment.
+\end{itemize}
+In addition, exercises may be organised into lists; see Chapter \ref{rarities} for details.
+
+The default \verb"enumerate" environment numbers each list item with
+an arabic numeral followed by a full stop. You can specify how lists and sublists are `numbered';
+for math books we much prefer  (i), (ii), etc. as the top level, as in this guide, so
+please cut and paste the following into the preamble of your master root file:\\[0.25\baselineskip]
+\begin{verbatim}
+\def\makeRRlabeldot#1{\hss\llap{#1}}
+\renewcommand\theenumi{{\rm (\roman{enumi})}}
+\renewcommand\theenumii{{\rm (\alph{enumii})}}
+\renewcommand\theenumiii{{\rm (\arabic{enumiii})}}
+\renewcommand\theenumiv{{\rm (\Alph{enumiv})}}
+\end{verbatim}
+Numbering of lists need not be consistent across the book, but it's attractive if it is. Note that for perfect alignment within the list, you now need to add the width of the widest label in square braces, as shown below. With the above commands included,\\[0.25\baselineskip]
+\begin{verbatim}
+  \begin{enumerate}[(ii)]
+    \item First, the first item \ldots
+      \begin{enumerate}[(b)]
+        \item First subentry \ldots
+        \item Second subentry
+      \end{enumerate}
+    \item Second, the next item \ldots
+      \begin{enumerate}[(b)]
+        \item Another subentry
+          \begin{enumerate}[(1)]
+            \item First subsubentry \ldots
+              \begin{enumerate}[(A)]
+                \item First subsubsubentry \ldots
+              \end{enumerate}
+          \end{enumerate}
+      \end{enumerate}
+  \end{enumerate}
+\end{verbatim}
+produces the following list:
+  \begin{enumerate}[(ii)]
+    \item First, the first item \ldots
+      \begin{enumerate}[(b)]
+        \item First subentry \ldots
+        \item Second subentry
+      \end{enumerate}
+    \item Second, the next item \ldots
+      \begin{enumerate}[(b)]
+        \item Another subentry
+          \begin{enumerate}[(1)]
+            \item First subsubentry \ldots
+              \begin{enumerate}[(A)]
+                \item First subsubsubentry \ldots
+              \end{enumerate}
+          \end{enumerate}
+      \end{enumerate}
+  \end{enumerate}
+
+Of course, you can always overide the automatic numbering by including an optional argument, like so: \verb"\item[(I)]", but we'd rather you didn't unless absolutely necessary.
+
+\subsection{Spanning rule at the start of each chapter}
+The page design for your book may include `spanning rules' at
+start of chapters, between the chapter number and the chapter
+title, as in this guide. Spanning rules are obtained as a document class option:
+\begin{verbatim}
+  \documentclass[spanningrule]{cambridge7A}
+\end{verbatim}
+
+\subsection{Abstracts and key words}
+Please include in your root file an abstract and key words for the book
+using the \verb"\bookabstract" and \verb"\bookkeywords" commands in the body
+of the root file: see Appendix~\ref{root} for examples. List up to five key words.
+If there is an agreed international classification for your subject, please let us know what it is, and use terms/codes from that. For mathematics books the key words/codes
+should be chosen from the 3 digit levels in the 2010 Mathematics Subject classification.
+The abstract and key word list might not be printed in the book, but will be associated metadata which will be helpful for users of the electronic version of your book, and in marketing.
+
+In addition, you may add an abstract and key words for individual chapters using \verb"\chapterabstract" and \verb"\chapterkeywords". These will not be printed, but may be useful as metadata (as above).
+
+\subsection{Figures and tables}
+
+The \cambridge\ class will cope with most positioning of your figures and tables.
+The \verb"graphicx.sty" package is the recommended way to incorporate figures,
+which should be in the form of \verb".eps" files. Convert other figure formats
+to this form, rather than compile the book directly to .pdf, as this can produce
+platform-dependent output. Each figure should be followed by a caption that
+explains what the illustration is about  without having to read the text. The \verb"\caption"
+command will also number the figure.
+
+The caption for tables should precede the actual table, but otherwise the same comments apply.
+
+Figures and tables can be set in portrait or landscape (rotated) style. See Chapter \ref{figtabchap}
+for further information for more details about figures and tables.
+
+\subsection{Footnotes and endnotes}
+Though the \cambridge\ class can accommodate footnotes or endnotes, but not both, we prefer
+you to use footnotes.\footnote{Footnotes are arabic numbered, and the counter is reset for each chapter.}
+
+Endnotes are inserted in the text in a similar way to footnotes, but with the \verb"\endnote" command; for example,
+\begin{verbatim}
+  When the Richardson number\endnote{Lewis Fry Richardson
+  (1881--1953).\label{richardson}} increases \ldots
+\end{verbatim}
+will produce `When the Richardson number$^5$ increases \ldots' in the text --
+assuming this is the fifth endnote of the chapter. Use \verb"\theendnotes"  in the root
+file to output
+ the endnotes at the end of the book, before the references, but after any appendices,
+where they will appear, ordered by chapter, in an unnumbered `chapter'.
+
+%\oneappendix
+\subsection{Appendices}
+Any appendices to your book should be placed immediately before the references,
+or endnotes in the event you have them.
+
+\subsubsection{One appendix}
+If you have a single appendix, code it as
+\begin{verbatim}
+ \oneappendix
+  \chapter{Appendix}
+     :
+  \endappendix
+\end{verbatim}
+
+\subsubsection{Several appendices}
+The following code will generate appendices that are appropriately labeled and named.
+\begin{verbatim}
+ \appendix
+ \chapter{First appendix title}
+ \section{Heading}
+     :
+ \chapter{Second appendix title}
+  \section{Heading}
+     :
+ \endappendix
+\end{verbatim}
+
+Equations, theorems etc., tables and figures should be handled exactly as in the main part
+of the book. The numbering will be taken care of automatically.
+See Appendix \ref{appnum} for examples.
+
+\subsection{References}
+Reference lists, or bibliographies, can be at the end of the book
+or at the end of chapters, or even both in some cases.
+Any of the standard citation styles -- numbered, [12], abbreviated author, [Se],
+ or author--date, (Serre 1958), -- are permitted though we prefer the author--date
+style, as it's most helpful to readers. Beware of long strings of references
+if you switch to this style from a numbered one, and write appropriately to
+avoid repeating names. See Chapter \ref{ref} for details.
+
+\subsection{Indexes and Glossaries}
+Most books should include an index, usually a subject index. Others may also
+include an author index as well. The construction of indexes is usually the responsibility
+of the author, and it is advisable to make use of {\LaTeX}'s automatic indexing facility
+to create an index before production begins.
+See Chapter \ref{indexes} for more information.
+
+You may wish also to include a glossary (they can be helpful in interdisciplinary books)
+in which definitions or explanations of key 
+ideas are organised alphabetically. See Section \ref{glossary} for more details.
+
+\endinput

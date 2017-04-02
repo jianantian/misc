@@ -1,0 +1,18 @@
+\def\cprime{$'$}
+\begin{thebibliography}{2}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname selectlanguage\endcsname\relax
+  \def\selectlanguage#1{\relax}\fi
+
+\bibitem[\protect\citename{Menshikov, }1985]{MenshEst}
+Menshikov, M.~V. 1985.
+\newblock Estimates for percolation thresholds for lattices in {${\bf R}\sp
+  n$}.
+\newblock {\em Dokl. Akad. Nauk SSSR}, {\bf 284}, 36--39.
+
+\bibitem[\protect\citename{Vyssotsky {et~al.}, }1961]{VGFH}
+Vyssotsky, V.~A., Gordon, S.~B., Frisch, H.~L., and Hammersley, J.~M. 1961.
+\newblock Critical percolation probabilities (bond problem).
+\newblock {\em Phys. Rev.}, {\bf 123}, 1566--1567.
+
+\end{thebibliography}

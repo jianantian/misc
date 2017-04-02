@@ -1,0 +1,80 @@
+% 02authored.tex
+% 2011/02/28, v3.00 gamma
+
+  \chapter{Numbering and headings}
+  \label{chapstructure}
+
+
+\section{Chapter numbering}
+Chapter numbers are generated automatically when the full book
+is compiled with all chapters in place. Unnumbered chapters, such as the preface,
+are specified using the \verb"\chapter*" command.
+
+\section{Section numbering}
+
+\LaTeX\ provides five levels of section heads, and all are defined
+in the \cambridge\ class file: \verb"\section", \verb"\subsection",
+ \verb"\subsubsection", \verb"\paragraph", and \verb"\subparagraph".
+The first three levels are numbered, unless you use a starred version
+such as \verb"\section*".
+
+If your book includes an unnumbered chapter (e.g. \verb"\chapter*{Introduction}",
+then ensure that all the numbered elements within that chapter
+(e.g. section heads, equations, figures, etc) are unnumbered,
+by using \verb"\section*{...}" for example.
+Otherwise, sections will be numbered 0.1, 0.2, etc.
+The same applies to headings subsidiary to an unnumbered section heading,
+e.g. subsections, or items that are numbered by section.
+
+\section{Running heads}
+In \cambridge\ books, running heads are
+\begin{itemize}
+\item chapter titles on even-numbered pages (versos), and
+\item section numbers (if they exist) and titles  on odd-numbered pages (rectos).
+\end{itemize}
+
+If the chapter or section title is long, a shorter version for the running
+head can be specified using an optional argument
+to the \verb"\chapter" or \verb"\section" command, for example:
+\begin{verbatim}
+  \chapter[Running head title]{Full chapter title}
+\end{verbatim}
+
+To ensure that the full versions of chapter and section titles are
+given in the table of contents, simply do the following:
+
+\begin{verbatim}
+  \chapter[TOC entry]{Full chapter title}
+  \chaptermark{Short title, i.e., running head entry}
+
+  \section[TOC entry]{Full section title
+    \sectionmark{Short title, i.e. running head entry}}
+    \sectionmark{Short title, i.e. running head entry}
+\end{verbatim}
+The TOC entry may in fact be the same as the full chapter or section title.
+But note that for sections, you need the optional argument to \verb"\section",
+even if `TOC entry' is in fact the same text as `Full section title'.
+Also, the \verb"\sectionmark" has to be entered twice as shown, because
+the first \verb"\sectionmark" deals with the header of the page that
+the \verb"\section" command falls on, and the second deals with subsequent pages.
+However, there's no need to include section number in the \verb"\sectionmark" argument.
+
+\section{Parts}
+Sometimes you may wish break the book into segments that are bigger than chapters. For this
+you can use the \verb"\part" command. This will create a Part Title page which will always
+appear on an odd-numbered page the verso of which will be blank. An entry of the Table of Contents
+will be created automatically: parts are numbered in `words'. For example
+
+\begin{verbatim}
+\part{The First Part}
+\end{verbatim}
+
+\noindent
+produces the Part Title on page \pageref{partpage}. Use max caps for Part Titles, as here.
+It's good style to enter Part Titles in the root file. 
+
+\section{Other}
+Numbering of other items, such as equations, figures and tables, theorems etc., references, exercises, are
+dealt with in relevant chapters.
+
+\endinput
